@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useCursorStore } from '@/store/cursorStore';
+export function TeamNode({ member, x, y, radius, dimmed, onHover, onSelect }) {
+    const setMode = useCursorStore((s) => s.setMode);
+    return (_jsxs("g", { transform: `translate(${x}, ${y})`, opacity: dimmed ? 0.55 : 1, style: { transition: 'opacity 200ms ease-out, transform 200ms ease-out' }, tabIndex: 0, role: "button", "aria-label": `${member.name}, ${member.role} — open profile`, onMouseEnter: () => { onHover(member.id); setMode('canvas-hotspot'); }, onMouseLeave: () => { onHover(null); setMode('default'); }, onFocus: () => onHover(member.id), onBlur: () => onHover(null), onClick: () => onSelect(member.id), onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ')
+            onSelect(member.id); }, className: "cursor-pointer outline-none focus-visible:opacity-100", children: [_jsx("circle", { r: radius + 2, fill: "none", stroke: "var(--tw-color-circuit-node-idle, #4A4C50)", strokeWidth: 2 }), _jsx("clipPath", { id: `clip-${member.id}`, children: _jsx("circle", { r: radius }) }), _jsx("image", { href: member.photo, x: -radius, y: -radius, width: radius * 2, height: radius * 2, clipPath: `url(#clip-${member.id})`, style: { filter: 'grayscale(35%) contrast(1.05) brightness(0.95)' } }), _jsx("text", { y: radius + 18, textAnchor: "middle", className: "fill-text-muted font-mono", style: { fontSize: '10px', letterSpacing: '0.06em', textTransform: 'uppercase' }, children: member.name })] }));
+}

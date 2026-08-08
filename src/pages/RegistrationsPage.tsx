@@ -1,0 +1,14 @@
+import { SectionHeader } from '@/components/ui/SectionHeader';
+
+// No R3F/GSAP-heavy imports here on purpose — this route is code-split away
+// from the WebGL/animation bundle entirely. See project-architecture §2.
+export default function RegistrationsPage() {
+  return (
+    <div className="max-w-4xl mx-auto px-6 md:px-16 py-30">
+      <SectionHeader code="SEC.02.A" label="EVENTS / REGISTRATIONS" title="Registrations" />
+      <p className="text-body-md text-text-secondary">
+        Register for upcoming hackathons, workshops and technical programs.
+      </p>
+    </div>
+  );
+}

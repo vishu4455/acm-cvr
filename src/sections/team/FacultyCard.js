@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { facultyCoordinator } from '@/data/team';
+export function FacultyCard() {
+    return (_jsxs("div", { className: "mb-16 flex flex-col md:flex-row items-center gap-8 bg-surface-card border border-border-subtle rounded-sm p-8 max-w-3xl mx-auto", children: [_jsx("img", { src: facultyCoordinator.photo, alt: facultyCoordinator.name, className: "h-28 w-28 rounded-full object-cover", style: { filter: 'grayscale(15%) contrast(1.05)' } }), _jsxs("div", { children: [_jsx("p", { className: "font-mono text-label uppercase tracking-widest text-text-muted mb-2", children: "Faculty Coordinator" }), _jsx("h3", { className: "text-h4 font-heading font-semibold text-text-primary", children: facultyCoordinator.name }), _jsxs("p", { className: "text-body-sm text-text-muted mb-3", children: [facultyCoordinator.credentials, " \u00B7 ", facultyCoordinator.role] }), _jsx("p", { className: "text-body-sm text-text-secondary", children: facultyCoordinator.bio })] })] }));
+}

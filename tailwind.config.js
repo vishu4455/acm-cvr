@@ -1,0 +1,80 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ['"Inter Tight"', '-apple-system', '"Segoe UI"', 'Helvetica', 'Arial', 'sans-serif'],
+        body: ['Inter', '-apple-system', '"Segoe UI"', 'Helvetica', 'Arial', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"SF Mono"', '"Cascadia Code"', 'Consolas', 'monospace'],
+      },
+      colors: {
+        brand: {
+          primary: '#5FA8B8',
+          secondary: '#7D8A94',
+          accent: '#B98B54',
+          'accent-muted': '#7A6248',
+        },
+        surface: {
+          base: '#000000',
+          page: '#0B0C0E',
+          card: '#121316',
+          raised: '#1B1C20',
+          overlay: '#26272C',
+          hover: '#1B1C20',
+          active: '#0B0C0E',
+        },
+        text: {
+          primary: '#F2F2F0',
+          secondary: '#B4B6BB',
+          muted: '#7C7E85',
+          disabled: '#4A4B50',
+          inverse: '#0A0A0B',
+        },
+        border: {
+          subtle: '#232428',
+          strong: '#3A3C42',
+        },
+        divider: '#1C1D21',
+        focus: { ring: '#8FC4CF' },
+        state: {
+          success: '#6B9E78',
+          warning: '#C29A4B',
+          error: '#B5544A',
+          info: '#5C7FA6',
+        },
+        circuit: {
+          'trace-idle': '#2A3438',
+          'trace-active': '#5FA8B8',
+          'trace-pulse': '#8FC4CF',
+          'core-body': '#3A3B3F',
+          'core-edge': '#55575D',
+          'node-idle': '#4A4C50',
+          'node-active': '#C9DEE2',
+        },
+      },
+      fontSize: {
+        h1: ['clamp(2.5rem, 1.92rem + 2.31vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.02em', fontWeight: '600' }],
+        h2: ['clamp(2rem, 1.62rem + 1.54vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.015em', fontWeight: '600' }],
+        h3: ['clamp(1.625rem, 1.38rem + 0.96vw, 2.25rem)', { lineHeight: '1.15', letterSpacing: '-0.01em', fontWeight: '600' }],
+        h4: ['clamp(1.375rem, 1.23rem + 0.58vw, 1.75rem)', { lineHeight: '1.2', letterSpacing: '-0.005em', fontWeight: '600' }],
+        h5: ['clamp(1.1875rem, 1.12rem + 0.29vw, 1.375rem)', { lineHeight: '1.3', letterSpacing: '0em', fontWeight: '500' }],
+        h6: ['clamp(1rem, 0.95rem + 0.19vw, 1.125rem)', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.6', fontWeight: '400' }],
+        'body-md': ['1rem', { lineHeight: '1.6', fontWeight: '400' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.55', letterSpacing: '0.005em', fontWeight: '400' }],
+        caption: ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.02em', fontWeight: '400' }],
+        label: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.08em', fontWeight: '500' }],
+      },
+      borderRadius: { sm: '4px', md: '8px' },
+      spacing: { 18: '4.5rem', 30: '7.5rem', 40: '10rem' },
+      backdropBlur: { xs: '4px', sm: '6px' },
+      transitionTimingFunction: {
+        'power2-out': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        'power3-out': 'cubic-bezier(0.22, 0.61, 0.36, 1)',
+      },
+    },
+  },
+  plugins: [],
+};

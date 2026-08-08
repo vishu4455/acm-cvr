@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Referenced by HeroTicker's animate-[scroll_30s_linear_infinite] utility —
+     the class was generating with no matching keyframes, so it silently did
+     nothing. HeroTicker duplicates its item list once, so -50% is exactly
+     one full copy's width, giving a seamless loop. */
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    background-color: theme('colors.surface.base');
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-surface-base text-text-primary font-body text-body-md antialiased;
+  }
+  ::selection {
+    background-color: theme('colors.brand.primary');
+    color: theme('colors.text.inverse');
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.focus.ring');
+    outline-offset: 2px;
+  }
+}
+
+@media (pointer: fine) {
+  body.cursor-ready,
+  body.cursor-ready a,
+  body.cursor-ready button {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
