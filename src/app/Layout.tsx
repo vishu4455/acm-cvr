@@ -4,9 +4,11 @@ import { Navbar } from '@/navigation/Navbar';
 import { Footer } from '@/sections/footer/Footer';
 import { CustomCursor } from '@/cursor/CustomCursor';
 import { useCursorTracking } from '@/cursor/useCursorTracking';
+import { useScrollToHash } from '@/navigation/useScrollToHash';
 
 export function Layout() {
   useCursorTracking();
+  useScrollToHash();
 
   return (
     <>

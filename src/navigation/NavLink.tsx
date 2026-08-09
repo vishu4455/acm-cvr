@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useUIStore } from '@/store/uiStore';
 
 export function NavLink({ id, label, href }: { id: string; label: string; href: string }) {
@@ -5,8 +6,8 @@ export function NavLink({ id, label, href }: { id: string; label: string; href: 
   const isActive = activeSection === id;
 
   return (
-    <a
-      href={href}
+    <Link
+      to={`/${href}`}
       className={`relative font-body text-body-sm transition-[color,letter-spacing] duration-150
         ${isActive ? 'text-brand-primary' : 'text-text-secondary hover:text-brand-primary hover:tracking-wide'}`}
     >
@@ -14,6 +15,6 @@ export function NavLink({ id, label, href }: { id: string; label: string; href: 
       {isActive && (
         <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-circuit-trace-active" />
       )}
-    </a>
+    </Link>
   );
 }

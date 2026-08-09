@@ -1,4 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
+import { Link } from 'react-router-dom';
 import { useCursorStore } from '@/store/cursorStore';
 const base = 'inline-flex items-center justify-center rounded-sm px-6 py-3 font-body text-body-sm transition-colors duration-150 ease-power2-out focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2 focus:ring-offset-surface-base';
 const variants = {
@@ -14,6 +15,12 @@ export function Button({ children, variant = 'primary', href, onClick, disabled 
         onMouseLeave: () => setMode('default'),
     };
     if (href) {
+        // In-page section links (e.g. "#join") route through the SPA router so
+        // they work from any route, not just when already on the homepage —
+        // matches the fix in NavLink for the same underlying issue.
+        if (href.startsWith('#')) {
+            return (_jsx(Link, { to: `/${href}`, className: className, ...handlers, children: children }));
+        }
         return (_jsx("a", { href: href, className: className, target: href.startsWith('http') ? '_blank' : undefined, rel: "noreferrer", ...handlers, children: children }));
     }
     return (_jsx("button", { className: className, onClick: onClick, disabled: disabled, ...handlers, children: children }));

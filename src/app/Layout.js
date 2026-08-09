@@ -5,7 +5,9 @@ import { Navbar } from '@/navigation/Navbar';
 import { Footer } from '@/sections/footer/Footer';
 import { CustomCursor } from '@/cursor/CustomCursor';
 import { useCursorTracking } from '@/cursor/useCursorTracking';
+import { useScrollToHash } from '@/navigation/useScrollToHash';
 export function Layout() {
     useCursorTracking();
+    useScrollToHash();
     return (_jsxs(_Fragment, { children: [_jsx(CustomCursor, {}), _jsx(Navbar, {}), _jsx("main", { children: _jsx(Suspense, { fallback: _jsx("div", { className: "min-h-screen" }), children: _jsx(Outlet, {}) }) }), _jsx(Footer, {})] }));
 }

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { useCursorStore } from '@/store/cursorStore';
 
 interface ButtonProps {
@@ -26,6 +27,16 @@ export function Button({ children, variant = 'primary', href, onClick, disabled 
   };
 
   if (href) {
+    // In-page section links (e.g. "#join") route through the SPA router so
+    // they work from any route, not just when already on the homepage —
+    // matches the fix in NavLink for the same underlying issue.
+    if (href.startsWith('#')) {
+      return (
+        <Link to={`/${href}`} className={className} {...handlers}>
+          {children}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={className} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" {...handlers}>
         {children}
