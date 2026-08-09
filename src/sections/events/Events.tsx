@@ -10,7 +10,7 @@ export function Events() {
     <section id="events" className="py-30 px-6 md:px-16">
       <div className="max-w-4xl mx-auto">
         <SectionHeader code="SEC.02" label="EVENTS" title="Explore Our Events & Activities" />
-        <div ref={revealRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div ref={revealRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {eventLinks.map((event) => (
             <EventLinkCard key={event.id} event={event} />
           ))}

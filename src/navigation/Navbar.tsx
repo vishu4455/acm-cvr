@@ -40,7 +40,7 @@ export function Navbar() {
         ${navScrolled ? 'bg-surface-page/95 backdrop-blur-sm border-b border-border-subtle' : 'bg-transparent border-b border-transparent'}`}
     >
       <Link to="/" className="flex items-center gap-2.5">
-        <img src="/brand/acm-logo-128.png" alt="" className="h-8 w-8" aria-hidden="true" />
+        <img src="/brand/acm-logo-128.png" alt="" className="h-8 w-8 rounded-full object-cover" aria-hidden="true" />
         <span className="font-mono text-label uppercase tracking-widest text-text-primary">
           CVR · ACM
         </span>

@@ -4,6 +4,7 @@ import { About } from '@/sections/about/About';
 import { Events } from '@/sections/events/Events';
 import { Team } from '@/sections/team/Team';
 import { Join } from '@/sections/join/Join';
+import { Contact } from '@/sections/contact/Contact';
 export default function HomePage() {
-    return (_jsxs(_Fragment, { children: [_jsx(Hero, {}), _jsx(About, {}), _jsx(Events, {}), _jsx(Team, {}), _jsx(Join, {})] }));
+    return (_jsxs(_Fragment, { children: [_jsx(Hero, {}), _jsx(About, {}), _jsx(Events, {}), _jsx(Team, {}), _jsx(Join, {}), _jsx(Contact, {})] }));
 }

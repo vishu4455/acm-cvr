@@ -1,9 +1,20 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from 'react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Card } from '@/components/ui/Card';
-import { pastEvents } from '@/data/pastEvents';
+import { Modal } from '@/components/ui/Modal';
+import { useCursorStore } from '@/store/cursorStore';
+import { galleryCategories, galleryPhotos } from '@/data/galleryPhotos';
 // No R3F/GSAP-heavy imports here on purpose — this route is code-split away
 // from the WebGL/animation bundle entirely. See project-architecture §2.
 export default function GalleryPage() {
-    return (_jsxs("div", { className: "max-w-4xl mx-auto px-6 md:px-16 py-30", children: [_jsx(SectionHeader, { code: "SEC.02.B", label: "EVENTS / GALLERY", title: "Past Events & Milestones" }), _jsx("p", { className: "text-body-md text-text-secondary mb-16 max-w-2xl", children: "Highlights and memories from our chapter's technical initiatives, inaugural ceremonies, and coding competitions." }), _jsx("div", { className: "flex flex-col gap-16", children: pastEvents.map((event) => (_jsxs(Card, { className: "p-0 overflow-hidden", children: [event.image && (_jsx("img", { src: event.image, alt: event.imageAlt, className: "w-full aspect-video object-cover" })), _jsxs("div", { className: "p-6 md:p-8", children: [_jsxs("p", { className: "font-mono text-label uppercase tracking-widest text-text-muted mb-2", children: [event.tag, " \u00B7 ", event.date] }), _jsx("h3", { className: "text-h4 font-heading font-semibold text-text-primary mb-4", children: event.title }), event.description.map((para, i) => (_jsx("p", { className: "text-body-md text-text-secondary mb-4 last:mb-0", children: para }, i)))] })] }, event.id))) })] }));
+    const [activeCategory, setActiveCategory] = useState('All Moments');
+    const [lightboxPhoto, setLightboxPhoto] = useState(null);
+    const setMode = useCursorStore((s) => s.setMode);
+    const filtered = activeCategory === 'All Moments'
+        ? galleryPhotos
+        : galleryPhotos.filter((p) => p.category === activeCategory);
+    return (_jsxs("div", { className: "max-w-4xl mx-auto px-6 md:px-16 py-30", children: [_jsx(SectionHeader, { code: "SEC.02.C", label: "EVENTS / GALLERY", title: "Visual Highlights" }), _jsx("p", { className: "text-body-md text-text-secondary mb-10 max-w-2xl", children: "Browse through photos from our chapter's events, celebrations, and workshops." }), _jsx("div", { className: "flex flex-wrap gap-2 mb-12", children: galleryCategories.map((cat) => (_jsx("button", { onClick: () => setActiveCategory(cat), onMouseEnter: () => setMode('button'), onMouseLeave: () => setMode('default'), className: `rounded-sm px-4 py-2 font-mono text-label uppercase tracking-widest transition-colors duration-150
+              ${activeCategory === cat
+                    ? 'bg-brand-primary text-text-inverse'
+                    : 'bg-transparent border border-border-strong text-text-secondary hover:text-text-primary hover:border-brand-primary'}`, children: cat }, cat))) }), filtered.length === 0 ? (_jsx("p", { className: "text-body-md text-text-muted", children: "No photos in this category yet." })) : (_jsx("div", { className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6", children: filtered.map((photo) => (_jsxs("button", { onClick: () => setLightboxPhoto(photo), onMouseEnter: () => setMode('canvas-hotspot'), onMouseLeave: () => setMode('default'), className: "group relative aspect-square overflow-hidden rounded-md border border-border-subtle text-left", children: [_jsx("img", { src: photo.src, alt: photo.alt, className: "h-full w-full object-cover transition-transform duration-300 ease-power2-out group-hover:scale-105" }), _jsxs("div", { className: "absolute inset-x-0 bottom-0 bg-gradient-to-t from-surface-base/90 to-transparent p-4", children: [_jsx("p", { className: "font-mono text-label uppercase tracking-widest text-circuit-trace-active mb-1", children: photo.title }), _jsx("p", { className: "text-body-sm text-text-secondary", children: photo.subtitle })] })] }, photo.id))) })), _jsx(Modal, { open: !!lightboxPhoto, onClose: () => setLightboxPhoto(null), children: lightboxPhoto && (_jsxs("div", { children: [_jsx("img", { src: lightboxPhoto.src, alt: lightboxPhoto.alt, className: "w-full rounded-sm mb-6" }), _jsx("p", { className: "font-mono text-label uppercase tracking-widest text-circuit-trace-active mb-1", children: lightboxPhoto.title }), _jsx("h3", { className: "text-h5 font-heading font-semibold text-text-primary", children: lightboxPhoto.subtitle })] })) })] }));
 }

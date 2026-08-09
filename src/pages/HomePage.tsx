@@ -3,6 +3,7 @@ import { About } from '@/sections/about/About';
 import { Events } from '@/sections/events/Events';
 import { Team } from '@/sections/team/Team';
 import { Join } from '@/sections/join/Join';
+import { Contact } from '@/sections/contact/Contact';
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Events />
       <Team />
       <Join />
+      <Contact />
     </>
   );
 }
